@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kworva — Find Your Plug</title>
+  <meta name="description" content="Post what you need. Someone nearby helps. Tutoring, borrowing, errands, a lift, a quick gig — campus help, on demand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #0B6E4F;
+      --green-light: #E6F0E9;
+      --green-mid: #CDE9DA;
+      --orange: #FF6A3D;
+      --bg: #F7F4ED;
+      --text: #1A1714;
+      --muted: #7A7064;
+      --border: #ECE6DA;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 2px; }
+    .wordmark {
+      font-size: 22px; font-weight: 800;
+      color: var(--green); letter-spacing: -1px;
+    }
+    .nav-tag {
+      font-size: 11px; font-weight: 600;
+      color: var(--muted); letter-spacing: 0.2px;
+    }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff; font-weight: 700; font-size: 13px;
+      padding: 10px 20px; border-radius: 999px;
+      text-decoration: none;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 680px; margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 8vw, 64px);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -2px; color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero-sub {
+      font-size: 18px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 20px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .hero-position {
+      font-size: 14px; color: var(--text);
+      font-weight: 700; font-style: italic;
+      margin-bottom: 36px;
+      max-width: 440px; margin-left: auto; margin-right: auto;
+      line-height: 1.5;
+    }
+    .hero-actions {
+      display: flex; gap: 12px;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff; font-weight: 800; font-size: 15px;
+      padding: 16px 32px; border-radius: 14px;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--text); font-weight: 700; font-size: 15px;
+      padding: 16px 32px; border-radius: 14px;
+      text-decoration: none; display: inline-block;
+      border: 1px solid var(--border);
+    }
+    .hero-hint {
+      font-size: 13px; color: var(--muted);
+    }
+
+    /* ── How it works ── */
+    .section {
+      max-width: 760px; margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .section h2 {
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 48px; line-height: 1.15;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .step {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--green-light);
+      color: var(--green); font-weight: 800; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 17px; font-weight: 700;
+      margin-bottom: 8px; letter-spacing: -0.3px;
+    }
+    .step p {
+      font-size: 14px; color: var(--muted); line-height: 1.6;
+    }
+
+    /* ── Use cases ── */
+    .uses {
+      background: var(--green);
+      padding: 64px 24px;
+    }
+    .uses-inner {
+      max-width: 760px; margin: 0 auto;
+    }
+    .uses .section-label { color: var(--green-mid); }
+    .uses h2 { color: #fff; margin-bottom: 36px; }
+    .use-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .chip {
+      background: rgba(255,255,255,0.12);
+      color: #fff; font-size: 15px; font-weight: 600;
+      padding: 12px 20px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .chip.orange {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* ── Download CTA ── */
+    .waitlist {
+      max-width: 560px; margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .waitlist h2 {
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .waitlist p {
+      font-size: 16px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+    .form-note {
+      font-size: 12.5px; color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+    footer span { color: var(--green); font-weight: 700; }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .hero { padding: 56px 20px 48px; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-brand">
+      <div class="wordmark">kworva</div>
+      <div class="nav-tag">Campus help, on demand</div>
+    </div>
+    <a href="https://expo.dev/accounts/anthony_ayeke/projects/kworva/builds/c71901f4-7675-4897-8971-225071cf470a" class="nav-cta" target="_blank" rel="noopener">Download →</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-pill">Now in beta · Campus help, on demand</div>
+    <h1>Need a hand, or a plug<br /><span>for something? Just ask.</span></h1>
+    <p class="hero-sub">
+      Tutoring, borrowing, errands, a lift, a quick gig — the stuff no shop sells and no vendor lists. Post what you need. Someone nearby helps. You sort it out.
+    </p>
+    <p class="hero-position">
+      Don't scroll vendor groups hoping. Say what you need, and let it come to you.
+    </p>
+    <div class="hero-actions">
+      <a href="https://expo.dev/accounts/anthony_ayeke/projects/kworva/builds/c71901f4-7675-4897-8971-225071cf470a" class="btn-primary" target="_blank" rel="noopener">Download the app (Android) →</a>
+      <a href="#how" class="btn-secondary">See how it works</a>
+    </div>
+    <p class="hero-hint">Android · Free · Campus only · Open the link on your phone to install</p>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="section-label">How it works</div>
+    <h2>Three steps.<br />No stress.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Post what you need</h3>
+        <p>A lesson, a charger to borrow, someone heading your way, a hand with a task — say it in plain words.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Someone nearby helps</h3>
+        <p>A plug who can sort you out sees it and hits "I've got this."</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get it sorted</h3>
+        <p>Chat, agree, done — a lesson, a loan, a lift, a hand. Your way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section class="uses">
+    <div class="uses-inner">
+      <div class="section-label">What people use it for</div>
+      <h2 style="color:#fff; font-size: clamp(26px, 5vw, 40px); font-weight:800; letter-spacing:-1px; margin-bottom:36px; line-height:1.15;">
+        If you need it on campus,<br />just post it.
+      </h2>
+      <div class="use-chips">
+        <div class="chip orange">📚 Tutoring &amp; course help</div>
+        <div class="chip orange">🔌 Borrow a charger, calculator, textbook</div>
+        <div class="chip orange">🚗 Split a ride or a bulk order</div>
+        <div class="chip">🏃 Errands, pickups &amp; deliveries</div>
+        <div class="chip">✂️ Barbing &amp; braiding in your room</div>
+        <div class="chip">🎬 Quick gigs — editing, printing, design</div>
+        <div class="chip">🔧 Repairs &amp; fix-its</div>
+        <div class="chip">🤝 A hand with anything one-off</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="waitlist" id="waitlist">
+    <div class="section-label" style="text-align:center;">Available now</div>
+    <h2>Download Kworva.<br />Find your plug today.</h2>
+    <p>
+      Open the link below on your Android phone. Tap download, allow the install, and you're in.
+    </p>
+    <a href="https://expo.dev/accounts/anthony_ayeke/projects/kworva/builds/c71901f4-7675-4897-8971-225071cf470a" class="btn-primary" target="_blank" rel="noopener" style="display:inline-block; margin-bottom:16px;">Download the app (Android) →</a>
+    <p class="form-note">Free · Android only for now · Open on your phone to install</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Built for Nigerian campuses &nbsp;·&nbsp; <span>kworva</span> &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <a href="/privacy" style="color:var(--green);text-decoration:none;font-weight:600;">Privacy Policy</a></p>
+  </footer>
+
+</body>
+</html>

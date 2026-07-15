@@ -31,7 +31,13 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
+.env.local
 .env*.local
+
+# Firebase — contains API key, keep out of public repos
+google-services.json
+GoogleService-Info.plist
 
 # typescript
 *.tsbuildinfo
