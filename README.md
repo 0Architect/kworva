@@ -4,7 +4,7 @@
 
 Post what you need. Someone nearby helps. Tutoring, borrowing, errands, a lift, a quick gig — the stuff no shop sells and no vendor lists. Say it in plain words and let it come to you.
 
-→ **[Download for Android](https://expo.dev/accounts/anthony_ayeke/projects/kworva/builds/c71901f4-7675-4897-8971-225071cf470a)** · **[Landing page](https://kworva.netlify.app)**
+→ **[kworva.netlify.app](https://kworva.netlify.app)** — open on your Android phone to download
 
 ---
 
